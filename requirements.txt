@@ -1,7 +1,6 @@
-pandas
 numpy
-matplotlib
-google-generativeai
+opencv-python-headless
+Pillow
 streamlit
-requests
-streamlit-webrtc==0.21.0
+streamlit-webrtc
+av

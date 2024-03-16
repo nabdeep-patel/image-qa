@@ -1,41 +1,31 @@
+from io import BytesIO
 import streamlit as st
-from streamlit_webrtc import webrtc_streamer, VideoProcessorBase, RTCConfiguration
+from PIL import Image
+from streamlit_webrtc import webrtc_streamer
 
-class VideoTransformer(VideoProcessorBase):
-    def transform(self, frame):
-        return frame
+st.info("NOTE: To use this apk please give webcam access.")
 
+# Main function
 def main():
-    st.title("Capture Image from Camera")
+    # Title and instructions
+    st.title("Webcam Image Capture")
+    st.write("Capture an Image from Webcam")
 
-    # Front camera configuration
-    front_camera_config = RTCConfiguration({"video": True, "audio": False})
-    front_camera = webrtc_streamer(
-        key="front-camera",
-        video_transformer_factory=VideoTransformer,
-        rtc_configuration=front_camera_config,
-        mode="video",
-        async_transform=True,
+    # Webcam capture mode
+    img_file_buffer = st.camera_input(
+        label="",
+        key="webcam",
+        help="Make sure you have given webcam permission to the site"
     )
 
-    # Back camera configuration
-    back_camera_config = RTCConfiguration({"video": {"facingMode": "environment"}, "audio": False})
-    back_camera = webrtc_streamer(
-        key="back-camera",
-        video_transformer_factory=VideoTransformer,
-        rtc_configuration=back_camera_config,
-        mode="video",
-        async_transform=True,
-    )
+    # If image is captured
+    if img_file_buffer is not None:
+        # Convert image buffer to PIL Image
+        image = Image.open(img_file_buffer)
+        
+        # Display the captured image
+        st.image(image, caption='Captured Image', use_column_width=True)
 
-    # Display captured image
-    if front_camera and back_camera:
-        st.image(front_camera, channels="BGR", use_column_width=True, caption="Front Camera")
-        st.image(back_camera, channels="BGR", use_column_width=True, caption="Back Camera")
-    elif front_camera:
-        st.image(front_camera, channels="BGR", use_column_width=True, caption="Front Camera")
-    elif back_camera:
-        st.image(back_camera, channels="BGR", use_column_width=True, caption="Back Camera")
-
+# Execute the main function
 if __name__ == "__main__":
     main()
