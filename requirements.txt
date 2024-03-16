@@ -4,3 +4,4 @@ matplotlib
 google-generative-ai
 streamlit
 requests
+streamlit-webrtc==0.21.0
