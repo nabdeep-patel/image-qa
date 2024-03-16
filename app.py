@@ -1,20 +1,11 @@
-# Q&A Chatbot
-#from langchain.llms import OpenAI
-
-from dotenv import load_dotenv
-load_dotenv()  # take environment variables from .env.
-
 import streamlit as st
 import os
 import pathlib
 import textwrap
 from PIL import Image
 
-
 import google.generativeai as genai
 genai.configure(api_key=st.secrets["genaiapi"])
-
-## Function to load OpenAI model and get respones
 
 def get_gemini_response(input,image):
     model = genai.GenerativeModel('gemini-pro-vision')
