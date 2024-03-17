@@ -31,7 +31,7 @@ def main():
     st.sidebar.markdown("Created by Nabdeep Patel")
 
     
-    st.title("Image QA_Bot")
+    st.title("Image Question Answer")
     st.write("Capture an Image from Webcam or Upload an Image")
 
     # Radio button to choose capture mode
