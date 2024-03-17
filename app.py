@@ -1,39 +1,49 @@
+from io import BytesIO
 import streamlit as st
-import os
-import pathlib
-import textwrap
 from PIL import Image
+from streamlit_webrtc import webrtc_streamer
 
-import google.generativeai as genai
-genai.configure(api_key=st.secrets["genaiapi"])
+st.info("NOTE: In order to use this mode, you need to give webcam access.")
 
-def get_gemini_response(input,image):
-    model = genai.GenerativeModel('gemini-pro-vision')
-    if input!="":
-       response = model.generate_content([input,image])
+# Main function
+def main():
+    # Title and instructions
+    st.title("Webcam Image Capture")
+    st.write("Capture an Image from Webcam or Upload an Image")
+
+    # Radio button to choose capture mode
+    capture_mode = st.radio("Choose Capture Mode", ("Webcam", "Upload"))
+
+    # If webcam capture mode is selected
+    if capture_mode == "Webcam":
+        # Webcam capture mode
+        img_file_buffer = st.camera_input(
+            label="",
+            key="webcam",
+            help="Make sure you have given webcam permission to the site"
+        )
+
+        # If image is captured
+        if img_file_buffer is not None:
+            # Convert image buffer to PIL Image
+            image = Image.open(img_file_buffer)
+            
+            # Display the captured image
+            st.image(image, caption='Captured Image', use_column_width=True)
+
+    # If upload mode is selected
     else:
-       response = model.generate_content(image)
-    return response.text
+        # File uploader to upload an image
+        uploaded_file = st.file_uploader("Upload Image", type=["jpg", "jpeg", "png"])
 
-##initialize our streamlit app
+        # If image is uploaded
+        if uploaded_file is not None:
+            # Convert uploaded file to PIL Image
+            image = Image.open(uploaded_file)
+            
+            # Display the uploaded image
+            st.image(image, caption='Uploaded Image', use_column_width=True)
 
-st.set_page_config(page_title="Gemini Image Demo")
-
-st.header("Gemini Application")
-input=st.text_input("Input Prompt: ",key="input")
-uploaded_file = st.file_uploader("Choose an image...", type=["jpg", "jpeg", "png"])
-image=""   
-if uploaded_file is not None:
-    image = Image.open(uploaded_file)
-    st.image(image, caption="Uploaded Image.", use_column_width=True)
-
-
-submit=st.button("Tell me about the image")
-
-## If ask button is clicked
-
-if submit:
-    
-    response=get_gemini_response(input,image)
-    st.subheader("The Response is")
-    st.write(response)
+# Execute the main function
+if __name__ == "__main__":
+    main()
