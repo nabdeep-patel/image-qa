@@ -18,7 +18,7 @@ Github Repository: https://github.com/nabdeep-patel/handwritten-digit-recognitio
 Prompt is not mandatory, without the prompt the model will describe the provided image
 
 ## Model Details
-🔍 **Generative Model:** Google's GenerativeAI API powers the bot to understand and generate responses based on the provided input image and prompt. The model used is <span style="background-color: black; color: white; padding: 2px;">Gemini Pro Vision</span> and optimized for image-related question answering tasks.
+🔍 **Generative Model:** Google's GenerativeAI API powers the bot to understand and generate responses based on the provided input image and prompt. The model used is `Gemini Pro Vision` and optimized for image-related question answering tasks.
 
 ## Connect with Me
 🚀 If you liked my content, Please star this repository and use it in your projects by forking it. It will keep me motivated and help me provide better contents.
