@@ -1,14 +1,11 @@
 # Image Question Answer App
 
-[![GitHub](https://img.shields.io/badge/Github-Repository-blue?style=flat-square&logo=github)](https://github.com/nabdeep-patel/handwritten-digit-recognition)
-[![Open app](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://handwritten-digit-recognition-np.streamlit.app/)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://drive.google.com/file/d/1NMB8nkoAxM-wnV9gCdC12JyrscHml3vv/view?usp=sharing)
+[![GitHub](https://img.shields.io/badge/Github-Repository-blue?style=flat-square&logo=github)](https://github.com/nabdeep-patel/image-qa)
+[![Open app](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://image-question-answer-np.streamlit.app/)
 
-Streamlit App: https://handwritten-digit-recognition-np.streamlit.app
+Streamlit App: [https://image-question-answer-np.streamlit.app/](https://image-question-answer-np.streamlit.app/)
 
-Colab: https://drive.google.com/file/d/1NMB8nkoAxM-wnV9gCdC12JyrscHml3vv/view?usp=sharing
-
-Github Repository: https://github.com/nabdeep-patel/handwritten-digit-recognition
+Github Repository: https://github.com/nabdeep-patel/image-qa
 
 ## Youtube Report
 [![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/MBAd2XSiwsI/0.jpg)](https://www.youtube.com/watch?v=MBAd2XSiwsI)
