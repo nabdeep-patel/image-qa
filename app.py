@@ -4,7 +4,7 @@ import google.generativeai as genai
 
 st.info("NOTE: In order to use this mode, you need to give webcam access.")
 
-genai.configure(api_key= st.secrets("genainp"))
+genai.configure(api_key= st.secrets["genainp"])
 def get_gemini_response(input,image):
     model = genai.GenerativeModel('gemini-pro-vision')
     if input!="":
