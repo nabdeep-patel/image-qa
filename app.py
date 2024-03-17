@@ -1,13 +1,19 @@
-from io import BytesIO
 import streamlit as st
 from PIL import Image
-from streamlit_webrtc import webrtc_streamer
+import google.generativeai as genai
 
 st.info("NOTE: In order to use this mode, you need to give webcam access.")
 
-# Main function
+genai.configure(api_key= st.secrets("genainp"))
+def get_gemini_response(input,image):
+    model = genai.GenerativeModel('gemini-pro-vision')
+    if input!="":
+       response = model.generate_content([input,image])
+    else:
+       response = model.generate_content(image)
+    return response.text
+    
 def main():
-    # Title and instructions
     st.title("Webcam Image Capture")
     st.write("Capture an Image from Webcam or Upload an Image")
 
@@ -38,12 +44,17 @@ def main():
 
         # If image is uploaded
         if uploaded_file is not None:
-            # Convert uploaded file to PIL Image
             image = Image.open(uploaded_file)
-            
-            # Display the uploaded image
             st.image(image, caption='Uploaded Image', use_column_width=True)
+    
+    input=st.text_input("Input Prompt: ",key="input")
+    submit=st.button("Get Response")
 
-# Execute the main function
+    if submit:
+        response=get_gemini_response(input,image)
+        st.subheader("The Response is")
+        st.write(response)
+
+    
 if __name__ == "__main__":
     main()
