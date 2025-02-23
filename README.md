@@ -3,7 +3,7 @@
 [![GitHub](https://img.shields.io/badge/Github-Repository-blue?style=flat-square&logo=github)](https://github.com/nabdeep-patel/image-qa)
 [![Open app](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://image-question-answer-np.streamlit.app/)
 
-Streamlit App: [https://image-question-answer-np.streamlit.app/](https://image-question-answer-np.streamlit.app/)
+Streamlit App: [https://image-ai-chatbot.streamlit.app/](https://image-ai-chatbot.streamlit.app/)
 
 Github Repository: https://github.com/nabdeep-patel/image-qa
 
